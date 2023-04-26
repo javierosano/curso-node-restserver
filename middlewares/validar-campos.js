@@ -7,7 +7,7 @@ const validarCampos = (req, res, next) => {
     }
 
     next();
-};
+}
 
 
-export { validarCampos };
+export { validarCampos }

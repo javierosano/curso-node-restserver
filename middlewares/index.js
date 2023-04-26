@@ -1,10 +1,12 @@
-import * as validarCampos from "./validar-campos.js";
-import * as  validarJWT from "./validar-jwt.js";
-import * as validarRoles from "./validar-roles.js";
+
+import { validarCampos } from "./validar-campos.js";
+import { validarJWT } from "./validar-jwt.js";
+import { esAdminRole, tieneRole } from "./validar-roles.js";
 
 
 export {
     validarCampos,
     validarJWT,
-    validarRoles
+    esAdminRole,
+    tieneRole
 }

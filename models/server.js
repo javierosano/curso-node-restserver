@@ -1,9 +1,14 @@
 import express from 'express';
 import cors from 'cors';
 
-import userRoutes from '../routes/usuarios.js';
-import authRoute from '../routes/auth.js'
 import dbConnection from '../databse/config.js';
+
+import authRoute from '../routes/auth.js'
+import { buscarRoute } from '../routes/buscar.js';
+import categoriaRoute from '../routes/categorias.js';
+import productoRoute from '../routes/productos.js';
+import userRoutes from '../routes/usuarios.js';
+
 
 class Server {
 
@@ -11,8 +16,13 @@ class Server {
         this.app = express();
         this.port = process.env.PORT;
 
-        this.usuariosPath = '/api/usuarios';
-        this.authPath = '/api/auth';
+        this.path = {
+            auth: '/api/auth',
+            buscar: '/api/buscar',
+            categorias: '/api/categorias',
+            productos: '/api/productos',
+            usuarios: '/api/usuarios'
+        }
 
         //Conectar a base de Datos
         this.conectarDB();
@@ -38,8 +48,11 @@ class Server {
     }
 
     routes() {
-        this.app.use(this.authPath, authRoute)
-        this.app.use(this.usuariosPath, userRoutes)
+        this.app.use(this.path.auth, authRoute)
+        this.app.use(this.path.buscar, buscarRoute)
+        this.app.use(this.path.categorias, categoriaRoute)
+        this.app.use(this.path.productos, productoRoute)
+        this.app.use(this.path.usuarios, userRoutes)
     }
 
     listen() {

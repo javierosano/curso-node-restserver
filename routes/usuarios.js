@@ -23,6 +23,7 @@ userRoutes.put('/:id', [
 ],
     usuariosPut);
 
+
 userRoutes.post('/', [
     check('nombre', 'El nombre es obligatorio').not().isEmpty(),
     check('password', 'La contraseña debe tener mas de 6 letras').isLength({ min: 6 }),
@@ -31,6 +32,7 @@ userRoutes.post('/', [
     check('rol').custom(esRolValido),
     validarCampos
 ], usuariosPost);
+
 userRoutes.patch('/', usuariosPatch)
 
 userRoutes.delete('/:id', [

@@ -56,11 +56,14 @@ const usuariosPut = async (req, res = response) => {
     const usuario = await Usuario.findByIdAndUpdate(id, resto)
     res.status(201).json(usuario);
 }
+
+
 const usuariosPatch = (req, res) => {
     res.json({
         msg: 'patch API'
     })
 }
+
 const usuariosDelete = async (req, res) => {
     const { id } = req.params;
     const usuario = await Usuario.findByIdAndUpdate(id, { estado: false });
